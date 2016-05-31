@@ -1,236 +1,162 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html>
+    <head>
+        <title>sketch.js &raquo; Basic Example</title>
+        <link rel="stylesheet" href="stylesheets/example.css">
+        <style type="text/css">
+            html, body {
+                background: #222;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <header class="info">
+            <hgroup class="about">
+                <h1>Particles using &rsaquo; sketch.js</h1>
+            </hgroup>
+            <nav class="more">
+                <a href="https://github.com/soulwire/sketch.js" target="_blank">View on Github</a>
+            </nav>
+        </header>
+        <script src="javascripts/sketch.min.js"></script>
+        <script>
 
-<head>
-  <title></title>
+        // ----------------------------------------
+        // Particle
+        // ----------------------------------------
 
-  <!-- General META -->
-  <meta charset="utf-8">
-  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="google-site-verification" content="likVd7fU-0lmsL4OSWSUPCD5ZOykuQvducfB_QW8bEE">
-
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/united/bootstrap.min.css"> -->
-  <!-- These files should go to custom css/js -->
-  <style type="text/css">
-  @import url(http://fonts.googleapis.com/css?family=Roboto:100);
-  @import url(http://fonts.googleapis.com/css?family=Roboto:100);
-  * {
-    box-sizing: border-box;
-  }
-
-  html,
-  body {
-    margin: 0;
-    background: #000000;
-  }
-
-  canvas {
-    display: block;
-    vertical-align: bottom;
-  }
-
-  #aa_particles {
-    z-index: 4;
-    height: 100%;
-    height: 100vh;
-    background: #000000;
-  }
-
-  .aa_sec {
-    position: absolute;
-    z-index: 5;
-    top: 50%;
-    right: 0;
-    left: 0;
-    margin: 0  auto;
-  }
-
-  .aa_txt {
-    font: 100 10vh/1 Roboto;
-    text-align: center;
-    color: #000000;
-  }
-
-  .aa_inner {
-    padding: 0 2rem;
-    text-transform: uppercase;
-    background: #ffffff;
-  }
-
-  .aa_of {
-    padding: 1rem;
-    color: #ffffff;
-    background: #583862;
-  }
-
-    .aa_center_text {
-    display: table;
-    width: 100%;
-    vertical-align: bottom;
-    margin: 5rem 0 5rem;
-    text-align: center;
-    background: #000000;
-    color: #ffffff;
-    font: 100 2vh/2 Roboto;
-  }
-  .aa_center_text a {
-    color: #cccccc;
-    text-decoration: none;
-    border-bottom: 1px solid #cccccc;
-  }
-
-  </style>
-  <!--Application CSS Files-->
-
-  <!-- HTML5 Shim -->
-  <!--[if lt IE 9]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-</head>
-
-<!--
-<body data-ng-controller="BodyController">
--->
-<body>
-
-  <div id="aa_particles">
-    <canvas class="particles-js-canvas-el" width="2880" height="614" style="width: 100%; height: 100%;"></canvas>
-  </div>
-
-
-  <!-- <div class="aa_center_text">
-    <a href="http://registry.jsonresume.org/teja">Raviteja Jayanti</a>
-  </div> -->
-
-
-
-
-
-  <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-
-  <!--Embedding The User Object-->
-  <script type="text/javascript">
-  /* ---- particles.js config ---- */
-
-  particlesJS("aa_particles", {
-  "particles": {
-    "number": {
-      "value": 250,
-      "density": {
-        "enable": true,
-        "value_area": 1000
-      }
-    },
-    "color": {
-      "value": "#ffffff"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#000000"
-      },
-      "polygon": {
-        "nb_sides": 5
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
-      }
-    },
-    "opacity": {
-      "value": 0.5,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 1,
-        "opacity_min": 0.1,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 3,
-      "random": true,
-      "anim": {
-        "enable": false,
-        "speed": 40,
-        "size_min": 0.1,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#ffffff",
-      "opacity": 0.4,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 6,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false,
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
-    }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "grab"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 140,
-        "line_linked": {
-          "opacity": 1
+        function Particle( x, y, radius ) {
+            this.init( x, y, radius );
         }
-      },
-      "bubble": {
-        "distance": 400,
-        "size": 40,
-        "duration": 2,
-        "opacity": 8,
-        "speed": 3
-      },
-      "repulse": {
-        "distance": 200,
-        "duration": 0.4
-      },
-      "push": {
-        "particles_nb": 4
-      },
-      "remove": {
-        "particles_nb": 2
-      }
-    }
-  },
-  "retina_detect": true
-});
 
+        Particle.prototype = {
 
-  </script>
+            init: function( x, y, radius ) {
 
-</body>
+                this.alive = true;
 
+                this.radius = radius || 10;
+                this.wander = 0.15;
+                this.theta = random( TWO_PI );
+                this.drag = 0.92;
+                this.color = '#fff';
+
+                this.x = x || 0.0;
+                this.y = y || 0.0;
+
+                this.vx = 0.0;
+                this.vy = 0.0;
+            },
+
+            move: function() {
+
+                this.x += this.vx;
+                this.y += this.vy;
+
+                this.vx *= this.drag;
+                this.vy *= this.drag;
+
+                this.theta += random( -0.5, 0.5 ) * this.wander;
+                this.vx += sin( this.theta ) * 0.1;
+                this.vy += cos( this.theta ) * 0.1;
+
+                this.radius *= 0.96;
+                this.alive = this.radius > 0.5;
+            },
+
+            draw: function( ctx ) {
+
+                ctx.beginPath();
+                ctx.arc( this.x, this.y, this.radius, 0, TWO_PI );
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        };
+
+        // ----------------------------------------
+        // Example
+        // ----------------------------------------
+
+        var MAX_PARTICLES = 280;
+        var COLOURS = [ '#69D2E7', '#F38630', '#FA6900' ];
+
+        var particles = [];
+        var pool = [];
+
+        var demo = Sketch.create({
+            container: document.getElementById( 'container' )
+        });
+
+        demo.setup = function() {
+
+            // Set off some initial particles.
+            var i, x, y;
+
+            for ( i = 0; i < 20; i++ ) {
+                x = ( demo.width * 0.5 ) + random( -100, 100 );
+                y = ( demo.height * 0.5 ) + random( -100, 100 );
+                demo.spawn( x, y );
+            }
+        };
+
+        demo.spawn = function( x, y ) {
+
+            if ( particles.length >= MAX_PARTICLES )
+                pool.push( particles.shift() );
+
+            particle = pool.length ? pool.pop() : new Particle();
+            particle.init( x, y, random( 5, 40 ) );
+
+            particle.wander = random( 0.5, 2.0 );
+            particle.color = random( COLOURS );
+            particle.drag = random( 0.9, 0.99 );
+
+            theta = random( TWO_PI );
+            force = random( 2, 8 );
+
+            particle.vx = sin( theta ) * force;
+            particle.vy = cos( theta ) * force;
+
+            particles.push( particle );
+        };
+
+        demo.update = function() {
+
+            var i, particle;
+
+            for ( i = particles.length - 1; i >= 0; i-- ) {
+
+                particle = particles[i];
+
+                if ( particle.alive ) particle.move();
+                else pool.push( particles.splice( i, 1 )[0] );
+            }
+        };
+
+        demo.draw = function() {
+
+            demo.globalCompositeOperation  = 'lighter';
+
+            for ( var i = particles.length - 1; i >= 0; i-- ) {
+                particles[i].draw( demo );
+            }
+        };
+
+        demo.mousemove = function() {
+
+            var particle, theta, force, touch, max, i, j, n;
+
+            for ( i = 0, n = demo.touches.length; i < n; i++ ) {
+
+                touch = demo.touches[i], max = random( 1, 4 );
+                for ( j = 0; j < max; j++ ) {
+                  demo.spawn( touch.x, touch.y );
+                }
+
+            }
+        };
+
+        </script>
+    </body>
 </html>
