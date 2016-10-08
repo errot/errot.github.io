@@ -16,220 +16,226 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/united/bootstrap.min.css"> -->
   <!-- These files should go to custom css/js -->
   <style type="text/css">
-  @import url(http://fonts.googleapis.com/css?family=Roboto:100);
-  @import url(http://fonts.googleapis.com/css?family=Roboto:100);
-  * {
-    box-sizing: border-box;
+  html,body {
+  margin-top: 2rem;
+  background: #111;
   }
-
-  html,
-  body {
-    margin: 0;
-    background: #000000;
+  #map_container {
+  	position: relative;
+  	padding-top: 50%;
+    width: 80%;
+    margin: 0 auto;
   }
-
-  canvas {
-    display: block;
-    vertical-align: bottom;
+  #map {
+  	position: absolute;
+  	width: 100%;
+  	height: 100%;
+  	top: 0;
   }
-
-  #aa_particles {
-    z-index: 4;
-    height: 100%;
-    height: 100vh;
-    background: #000000;
-  }
-
-  .aa_sec {
-    position: absolute;
-    z-index: 5;
-    top: 50%;
-    right: 0;
-    left: 0;
-    margin: 0  auto;
-  }
-
-  .aa_txt {
-    font: 100 10vh/1 Roboto;
-    text-align: center;
-    color: #000000;
-  }
-
-  .aa_inner {
-    padding: 0 2rem;
-    text-transform: uppercase;
-    background: #ffffff;
-  }
-
-  .aa_of {
-    padding: 1rem;
-    color: #ffffff;
-    background: #583862;
-  }
-
-    .aa_center_text {
-    display: table;
+  /*#map {
     width: 100%;
-    vertical-align: bottom;
-    margin: 5rem 0 5rem;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }*/
+  #floating-panel {
+    background: #fff;
+    padding: 5px;
+    font-size: 14px;
+    font-family: Arial;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+    display: none;
+  }
+  .pin-wrap {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    margin-top: -120.71068px;
+    margin-left: -50px;
+    transform-origin: 50% 120.71068% 0;
+  }
+
+  .pin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    transform-origin: 50% 120.71068% 0;
+  }
+
+  .pin::after {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    content: '';
+    transform: rotateZ(-45deg);
+    border: 20px solid #f93c11;
+    border-radius: 50% 50% 50% 50%;
+  }
+
+  .pin::before {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    content: '';
+    transform: rotateZ(-45deg);
+    border: 18px solid #d22b05;
+    border-radius: 50% 50% 50% 0;
+  }
+
+  .shadow {
+    position: absolute;
+  }
+
+  .shadow::after {
+    position: absolute;
+    left: -125px;
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    content: '';
+    transform: rotateX(55deg);
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.5) 100px 0 20px;
+  }
+
+  .pulse {
+    position: absolute;
+    margin-top: -50px;
+    margin-left: -50px;
+    transform: rotateX(55deg);
+  }
+
+  .pulse::after {
+    display: block;
+    width: 100px;
+    height: 100px;
+    content: '';
+    animation: pulsate 1s ease-out;
+    animation-delay: 1.1s;
+    animation-iteration-count: infinite;
+    opacity: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 6px 3px #f93c11;
+  }
+
+  @keyframes pulsate {
+    0% {
+      transform: scale(0.1, 0.1);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.2, 1.2);
+      opacity: 0;
+    }
+  }
+  .header {
+    font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 2em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
     text-align: center;
-    background: #000000;
-    color: #ffffff;
-    font: 100 2vh/2 Roboto;
+    color: #f93c11;
+    background: rgba(255, 255, 255, 0.75);
   }
-  .aa_center_text a {
-    color: #cccccc;
+
+  h1 {
+    font-family: Raleway, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    margin-bottom: 10px;
+    border-bottom: 2px dashed #f93c11;
+    display: inline-block;
+  }
+
+  .tags {
+    font-weight: 300;
+  }
+
+  .list-label {
+    font-family: Raleway, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 400;
+  }
+
+  .header li {
+    display: inline-block;
+  }
+
+  .tags a {
+    color: #f93c11;
+  }
+
+  .animations a {
+    line-height: 42px;
+    display: block;
+    box-sizing: border-box;
+    height: 44px;
+    margin: 0 5px;
+    padding: 0 10px;
     text-decoration: none;
-    border-bottom: 1px solid #cccccc;
+    color: #f93c11;
+    border: 2px solid #f93c11;
+    border-radius: 22px;
+    transition: background-color 0.3s, color 0.3s;
   }
+
+  .animations a:hover {
+    color: white;
+    background: #f93c11;
+  }
+
 
   </style>
-  <!--Application CSS Files-->
 
   <!-- HTML5 Shim -->
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <link href='//fonts.googleapis.com/css?family=Raleway:600,900,400|Roboto:300,700' rel='stylesheet'>
 </head>
 
-<!--
-<body data-ng-controller="BodyController">
--->
 <body>
 
-  <div id="aa_particles">
-    <canvas class="particles-js-canvas-el" width="2880" height="614" style="width: 100%; height: 100%;"></canvas>
+  <div id="floating-panel">
+    <strong>name:</strong>
+    <br>
+    <input id="name" type="text" name="name"
+    <br>
+    <input id="submit" type="submit" value="Submit">
   </div>
-
-
-  <!-- <div class="aa_center_text">
-    <a href="http://registry.jsonresume.org/teja">Raviteja Jayanti</a>
+  <div id="map_container">
+  	<div id="map"></div>
+  </div>
+  <!--
+  <div id="map_container">
   </div> -->
-
-
-
-
-
-  <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-
-  <!--Embedding The User Object-->
-  <script type="text/javascript">
-  /* ---- particles.js config ---- */
-
-  particlesJS("aa_particles", {
-  "particles": {
-    "number": {
-      "value": 250,
-      "density": {
-        "enable": true,
-        "value_area": 1000
-      }
-    },
-    "color": {
-      "value": "#ffffff"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#000000"
-      },
-      "polygon": {
-        "nb_sides": 5
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
-      }
-    },
-    "opacity": {
-      "value": 0.5,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 1,
-        "opacity_min": 0.1,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 3,
-      "random": true,
-      "anim": {
-        "enable": false,
-        "speed": 40,
-        "size_min": 0.1,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#ffffff",
-      "opacity": 0.4,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 6,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false,
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
-    }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "grab"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 140,
-        "line_linked": {
-          "opacity": 1
-        }
-      },
-      "bubble": {
-        "distance": 400,
-        "size": 40,
-        "duration": 2,
-        "opacity": 8,
-        "speed": 3
-      },
-      "repulse": {
-        "distance": 200,
-        "duration": 0.4
-      },
-      "push": {
-        "particles_nb": 4
-      },
-      "remove": {
-        "particles_nb": 2
-      }
-    }
-  },
-  "retina_detect": true
-});
-
-
+  <script src="http://messaging-public.realtime.co/js/2.1.0/ortc.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="javascripts/maps.js"></script>
+  <script src="javascripts/messages.js"></script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSFcj6BiEcZM79SiycQSAoeYZyAESs69U&callback=initialize">
   </script>
+  <script src="https://github.com/michaelvillar/dynamics.js/releases/download/0.0.8/dynamics.min.js"></script>
+  <script src="javascripts/customMarker.js"></script>
 
 </body>
 
