@@ -1,14 +1,4 @@
 function initMap() {
-  // var directionsService = new google.maps.DirectionsService;
-  // var directionsDisplay = new google.maps.DirectionsRenderer;
-  // map = new google.maps.Map(document.getElementById('map'), {
-  //   zoom: 7,
-  //   center: {lat: 41.85, lng: -87.65}
-  // });
-  // directionsDisplay.setMap(map);
-  //First init the marker
-
-
   if (navigator.geolocation) { //Checks if browser supports geolocation
    navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
      var latitude = position.coords.latitude;                    //users current
@@ -49,7 +39,6 @@ function initMap() {
            longitude: position.coords.longitude
          };
          ortcClient.send('myChannel', JSON.stringify(myMessage));
-          // do_something(position.coords.latitude, position.coords.longitude);
         }
 
         function geo_error() {
@@ -63,44 +52,27 @@ function initMap() {
         };
 
         var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
-      //  calculateAndDisplayRoute(directionsService, directionsDisplay);
      };
      var control = document.getElementById('floating-panel');
       control.style.display = 'block';
       map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
      document.getElementById('submit').addEventListener('click', onChangeHandler);
-    //  document.getElementById('end').addEventListener('change', onChangeHandler);
-    //  directionsService.route(request, function (response, status) {
-    //    if (status == google.maps.DirectionsStatus.OK) {
-    //      directionsDisplay.setDirections(response);
-    //    }
-    //  });
-    var marker = new CustomMarker(position, map, {draggable: true});
-
+    //Self marker
+    var marker = new CustomMarker(coords, map, {});
+    markers.push(marker);
    });
 
  }else{
    //Sorry, no cookies. Click to action to access geolocation
+   alert('Location unavailable');
  }
-}
-
-function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-  directionsService.route({
-    origin: document.getElementById('start').value,
-    destination: document.getElementById('end').value,
-    travelMode: 'DRIVING'
-  }, function(response, status) {
-    if (status === 'OK') {
-      directionsDisplay.setDirections(response);
-    } else {
-      window.alert('Directions request failed due to ' + status);
-    }
-  });
 }
 
 // Ads markers on Map
 function addMarker(location){
-  var marker = new CustomMarker(location, map, {draggable: true});
+  var marker = new CustomMarker(location, map, {
+  marker_id: '123'
+   });
 	// marker = new google.maps.Marker({
 	// 	position:location,
 	//     map:map,
