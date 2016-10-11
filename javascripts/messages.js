@@ -13,8 +13,8 @@ function initialize(){
 
 
         markers = [];
-        initMap();
         initMarker();
+        initMap();
         ortcClient.subscribe('myChannel', true, function(ortc, channel, message) {
           //Plot positions on map
           var locationObj = JSON.parse(message);
