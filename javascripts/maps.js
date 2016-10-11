@@ -20,12 +20,17 @@ function initMap() {
      {
        zoom: 15,  //Sets zoom level (0-21)
        center: coords, //zoom in on users location
-       mapTypeControl: true, //allows you to select map type eg. map or satellite
-       navigationControlOptions:
-       {
-         style: google.maps.NavigationControlStyle.SMALL //sets map controls size eg. zoom
-       },
-       mapTypeId: google.maps.MapTypeId.ROADMAP //sets type of map Options:ROADMAP, SATELLITE, HYBRID, TERRIAN
+       mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.HYBRID]
+      }, // here´s the array of controls
+      disableDefaultUI: true, // a way to quickly hide all controls
+      mapTypeControl: false,
+      scaleControl: true,
+      zoomControl: true,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.LARGE
+      },
+      mapTypeId: google.maps.MapTypeId.ROADMAP
      };
      map = new google.maps.Map( /*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
      directionsDisplay.setMap(map);
