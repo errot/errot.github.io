@@ -6,6 +6,10 @@ function CustomMarker(latlng, map, args) {
 	this.setMap(map);
 }
 
+
+CustomMarker.prototype.setPosition = function(latlng) {
+  this.latlng = latlng;
+};
 CustomMarker.prototype.draw = function() {
     var self = this;
     var div = this.div;
