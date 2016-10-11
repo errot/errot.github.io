@@ -221,16 +221,8 @@ function initMap() {
     //      directionsDisplay.setDirections(response);
     //    }
     //  });
-    var marker = new CustomMarker({
-            position: coords,
-            map: map,
-            draggable:true
-        });
-    var marker2 = new google.maps.Marker({
-            position: coords,
-            map: map,
-            draggable:true
-        });
+    var marker = new CustomMarker(position, map, {draggable: true});
+
    });
 
  }else{
@@ -254,11 +246,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
 // Ads markers on Map
 function addMarker(location){
-  var marker = new CustomMarker({
-          position: location,
-          map: map,
-          draggable:true
-      });
+  var marker = new CustomMarker(location, map, {draggable: true});
 	// marker = new google.maps.Marker({
 	// 	position:location,
 	//     map:map,
