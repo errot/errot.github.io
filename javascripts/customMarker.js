@@ -1,11 +1,12 @@
-function initMarker(){
-  CustomMarker.prototype = new google.maps.OverlayView();
-
   function CustomMarker(latlng, map, args) {
   	this.latlng = latlng;
   	this.args = args;
   	this.setMap(map);
   }
+
+  CustomMarker.prototype = new google.maps.OverlayView();
+
+
 
   CustomMarker.prototype.setPosition = function(latlng) {
     this.latlng = latlng;
@@ -151,7 +152,6 @@ function initMarker(){
           bounciness: 1800,
       });
   }
-}
 
 // $(function() {
 //     var pos = new google.maps.LatLng(42.9837, -81.2497);

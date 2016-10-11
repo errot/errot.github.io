@@ -6,7 +6,6 @@ function initialize(){
       ortcClient = factory.createClient();
       ortcClient.setClusterUrl('https://ortc-developers.realtime.co/server/ssl/2.1/');
       ortcClient.connect('9jmUdu', 'testToken');
-      initMarker();
       ortcClient.onConnected = function(ortc) {
         console.log("Connected to " + ortcClient.getUrl());
 
@@ -41,3 +40,5 @@ function initialize(){
     }
   });
 }
+
+google.maps.event.addDomListener(window, 'load', initialize);
