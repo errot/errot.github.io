@@ -7,7 +7,7 @@ function initMap() {
   // });
   // directionsDisplay.setMap(map);
   //First init the marker
-  
+
 
   if (navigator.geolocation) { //Checks if browser supports geolocation
    navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
@@ -108,7 +108,7 @@ function addMarker(location){
 // Ads markers on Map
 function moveMarker(location,marker){
   marker.setPosition(location);
-  map.panTo(location);
+  // map.panTo(location);
 }
 
 function search(nameKey, myArray){
