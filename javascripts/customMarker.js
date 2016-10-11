@@ -34,10 +34,7 @@ CustomMarker.prototype.draw = function() {
             google.maps.event.trigger(self, "click", event);
         });
     }
-    var color = randomColor({
-       luminosity: 'light',
-       hue: 'blue'
-    });
+    var color = '#8f7ce2';
     if (typeof(self.args.marker_id) !== 'undefined') {
       color = randomColor({
          luminosity: 'random',
